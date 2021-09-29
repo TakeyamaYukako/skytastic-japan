@@ -34,24 +34,7 @@ include "../classes/user.php";
   </style>
  
   <body>
-    <?php
-    include 'calendar.php';
-    include 'booking.php';
-    include 'bookingcell.php';
-
-    $booking = new Booking(
-      'tutorial',
-      'localhost',
-      'root',
-      ''
-    );
     
-    $bookableCell = new BookableCell($booking);
-    $clendar = new Calendar();
-    $calendar->attachObserver('showCell', $bookingCell);
-    $bookableCell->routeActions();
-    echo $calendar->show();
-    ?>
   <!-- banner area -->
   <div class="banner">
     <div class="banner-text">     
@@ -73,6 +56,40 @@ include "../classes/user.php";
             </div>
     </div>       
 </nav>
+
+<!-- calender section -->
+
+
+
+<link href="calendar.css" type="text/css" rel="stylesheet"/>
+
+
+<?php
+include '../classes/calendar.php';
+include '../classes/booking.php';
+include '../classes/bookableCell.php';
+ 
+ 
+$booking = new Booking(
+    'skytastic-japan',
+    'localhost',
+    'root',
+    ''
+);
+ 
+$bookableCell = new BookableCell($booking);
+ 
+$calendar = new Calendar();
+ 
+$calendar->attachObserver('showCell', $bookableCell);
+ 
+$bookableCell->routeActions();
+ 
+echo $calendar->show();
+?>
+
+
+
       
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

@@ -1,6 +1,6 @@
 <?php
 
-require "database.php";
+require_once "database.php";
 
 class User extends Database{
     public function createUser($first_name, $last_name,$contact_number, $email,$username, $password){
